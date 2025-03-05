@@ -11,7 +11,7 @@ import ProfileDropdown from "@/components/profile-dropdown";
 import Searchs from "@/components/Search";
 import ThemeSwitch from "@/components/theme-switch";
 
-export default function Page() {
+export default function Dashboard() {
   return (
     <SidebarProvider>
       <AppSidebar />
