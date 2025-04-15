@@ -33,3 +33,4 @@ class CustomUserAdmin(BaseUserAdmin):
 #admin.site.unregister(User)
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Vendeuradditional)
+admin.site.register(Categorie)

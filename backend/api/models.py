@@ -210,9 +210,6 @@ class EmailVerification(models.Model):
         return self.expires_at > timezone.now() if self.expires_at else False
     
     def send_verification_email(self):
-        
-        
-        
         # Configuration SMTP pour Gmail
         smtp_server = "smtp.gmail.com"
         smtp_port = 587

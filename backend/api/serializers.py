@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CustomUser, Vendeuradditional, Clientadditional
+from .models import CustomUser, Vendeuradditional, Clientadditional , Categorie , AttributProduit
 
 class VendeuradditionalSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,3 +19,13 @@ class CustomUserSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['id', 'email', 'nom', 'prenom', 'phone', 'type_user', 'is_email_verified', 'date_joined', 'vendeur', 'client']
         read_only_fields = ['id', 'date_joined', 'is_email_verified']
+
+class CategorieSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categorie
+        fields = '__all__'
+class AttributProduitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AttributProduit
+        fields = '__all__'
+

@@ -3,13 +3,14 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.db import transaction
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes , action
 from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import CustomUser, EmailVerification, Vendeuradditional, Clientadditional
-from .serializers import CustomUserSerializer
+from .models import CustomUser, EmailVerification, Vendeuradditional, Clientadditional ,Categorie
+from .serializers import CustomUserSerializer, CategorieSerializer
+from rest_framework import viewsets, permissions, status, filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -224,3 +225,31 @@ def resend_verification(request):
         {"message": "Un nouveau code de vérification a été envoyé"},
         status=status.HTTP_200_OK
     )
+
+
+class CategorieViewSet(viewsets.ModelViewSet):
+    queryset = Categorie.objects.all()
+    serializer_class = CategorieSerializer
+    """  lookup_field = 'slug'
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    search_fields = ['nom', 'description']
+    filterset_fields = ['parent', 'statut']
+    
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.AllowAny()]
+        return [permissions.IsAdminUser()]
+    
+    @action(detail=True, methods=['get'])
+    def produits(self, request, slug=None):
+        categorie = self.get_object()
+        produits = Produit.objects.filter(categorie=categorie, statut=True)
+        page = self.paginate_queryset(produits)
+        
+        if page is not None:
+            serializer = ProduitSerializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+        
+        serializer = ProduitSerializer(produits, many=True)
+        return Response(serializer.data)
+"""

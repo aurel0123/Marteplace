@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+
 import os
 from django.contrib.auth.hashers import make_password
 from datetime import timedelta
@@ -26,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&q36cy1-t6b^em&%@xe9r^1&8_#3uzu+%l=y8mj#bf07w#-fqy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
@@ -120,7 +122,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+DATABASES ["default"] = dj_database_url.parse("postgresql://marteplace_project_user:TlxxObNB0jyLFFZ6fkrD7LZMaYcI72lW@dpg-cvv45hadbo4c73fe7qbg-a.virginia-postgres.render.com/marteplace_project")
 
+#
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
