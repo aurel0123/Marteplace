@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-&q36cy1-t6b^em&%@xe9r^1&8_#3uzu+%l=y8mj#bf07w#-fqy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower()== "true"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS" , "127.0.0.1").split(" ")
 
 
 # Application definition
@@ -122,8 +122,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-database_url = os.environ.get("DATABASE_URL")
+database_url = "postgresql://marteplace_project_user:TlxxObNB0jyLFFZ6fkrD7LZMaYcI72lW@dpg-cvv45hadbo4c73fe7qbg-a.virginia-postgres.render.com/marteplace_project"
+#database_url = os.environ.get("DATABASE_URL")
 DATABASES ["default"] = dj_database_url.parse(database_url)
 
 #
@@ -166,7 +166,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
