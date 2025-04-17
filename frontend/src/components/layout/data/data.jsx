@@ -49,7 +49,7 @@ export const data = {
         }, 
         {
           title : 'Catégories',
-          url : 'dashboard/categories'
+          url : 'categories'
         }
       ]
     }, 

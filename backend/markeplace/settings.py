@@ -28,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&q36cy1-t6b^em&%@xe9r^1&8_#3uzu+%l=y8mj#bf07w#-fqy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower()== "true"
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "test-render-5trc.onrender.com"]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -122,7 +122,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-DATABASES ["default"] = dj_database_url.parse("postgresql://marteplace_project_user:TlxxObNB0jyLFFZ6fkrD7LZMaYcI72lW@dpg-cvv45hadbo4c73fe7qbg-a.virginia-postgres.render.com/marteplace_project")
+
+database_url = os.environ.get("DATABASE_URL")
+DATABASES ["default"] = dj_database_url.parse(database_url)
 
 #
 

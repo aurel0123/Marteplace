@@ -6,6 +6,7 @@
 
 @layer base {
   :root {
+    --icon-color : #EAEBEC;
     --background: hsl(241, 53%, 99%);
     --foreground: hsl(241, 0%, 0%);
     --muted: hsl(241, 0%, 89.23%);
@@ -30,10 +31,11 @@
     --chart-3: hsl(198.44, 93.2%, 59.61%);
     --chart-4: hsl(175.34, 77.44%, 26.08%);
     --chart-5: hsl(263.39, 69.96%, 50.39%);
-    --radius: 0.3rem;
+    --radius: 0.5rem;
   }
 
   .dark {
+    --icon-color : #616468;
     --background: hsl(241, 0%, 0%);
     --foreground: hsl(241, 0%, 100%);
     --muted: hsl(241, 4.35%, 16.22%);
@@ -69,6 +71,7 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-icon-color : var(--icon-color) ; 
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -108,7 +111,9 @@
     @apply bg-background text-foreground;
   }
 }
-
+.icon{
+  background-color: var(--icon-color);
+}
 :root {
   --sidebar: hsl(0 0% 98%);
   --sidebar-foreground: hsl(240 5.3% 26.1%);
