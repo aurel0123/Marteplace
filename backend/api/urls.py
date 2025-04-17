@@ -15,5 +15,5 @@ urlpatterns = [
     path('profile/', views.get_user_profile, name='get_user_profile'),  # Récupère le profil de l'utilisateur connecté
     path('resend-verification/', views.resend_verification, name='resend_verification'),  # Renvoie un code de vérification pour l'utilisateur connecté
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/', include(router.urls)),  # Ajoute les URL du routeur ici
+    path('', include(router.urls)),  # Ajoute les URL du routeur ici
 ]
